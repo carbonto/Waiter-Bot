@@ -1,7 +1,7 @@
 # Waiter-Bot
 Se trata de un aplicación del turtlebot para convertirlo en un robot camarero, a traves de ROS y una interfaz.
 ## Comenzando 🚀
-_Estas intrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propositos de desarrollo y pruebas.
+Estas intrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propositos de desarrollo y pruebas.
 ### Pre-Requisitos 📋
 Para la ejecución del software es necesario tener instalado en nuestro dispositivo ros noetic y 
 el Turtlebot3. Para su instalación utilizamos los comandos a continuación
