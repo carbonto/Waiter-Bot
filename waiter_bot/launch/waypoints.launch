@@ -33,10 +33,13 @@
                 type="string"
                 value="$(find waiter_bot)/waypoints_saved/$(arg map_name).pickle" />
     </node>
-  
+  <!--Move table-->
+  <node pkg="waiter_bot" name="move_table" type="move_table.py" output="screen"> 
+  </node>
   <!-- rviz -->
   <group if="$(arg open_rviz)"> 
     <node pkg="rviz" type="rviz" name="rviz" required="true"
           args="-d $(find turtlebot3_navigation)/rviz/turtlebot3_navigation.rviz"/>
   </group>
+
 </launch>
