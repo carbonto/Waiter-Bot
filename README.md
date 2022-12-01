@@ -30,7 +30,7 @@ Para lanzar el entorno simulado del costa coffee tenemos que cargar la simulacio
 
 ```
 roslaunch waiter_bot gazebo_costa_sim.launch
-roslaunch waiter_bot waypoints.launch
+roslaunch waiter_bot waypoints.launch map_name:="mapa_costa_coffee"
 ```
 
 

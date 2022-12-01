@@ -34,7 +34,7 @@ def newOdom(msg):
     global y
     global theta
     global sub
-    global homex,homey,mesa1x,mesa1y,mesa2x,mesa2y,mesa3x,mesa3y,mesa4x,mesa4y,mesa5x,mesa5y
+    global homex,homey,mesa1x,mesa1y,mesa2x,mesa2y,mesa3x,mesa3y,mesa4x,mesa4y,mesa5x,mesa5y,mesa6x,mesa6y
 
     rate = rospy.Rate(10)
     #Posicion Home
@@ -55,6 +55,10 @@ def newOdom(msg):
     #T5
     mesa5x = msg.markers[5].pose.position.x
     mesa5y = msg.markers[5].pose.position.y
+    #T6
+    mesa6x = msg.markers[6].pose.position.x
+    mesa6y = msg.markers[6].pose.position.y
+
 
     #print(x)
     rate.sleep()
@@ -69,7 +73,9 @@ def processBump(data):
         rospy.loginfo("Bebidas puestas en la mesa")
         rospy.loginfo("Moviendo a destino")
         cliente = ClienteMoveBase()
-        if mesa == 1:
+        if mesa == 0:
+            cliente.moveTo(homex,homey)
+        elif mesa == 1:
             cliente.moveTo(mesa1x, mesa1y)
         elif mesa == 2:
             cliente.moveTo(mesa2x, mesa2y)
@@ -79,9 +85,18 @@ def processBump(data):
             cliente.moveTo(mesa4x, mesa4y)
         elif mesa == 5:
             cliente.moveTo(mesa5x, mesa5y)
+        elif mesa == 6:
+            cliente.moveTo(mesa6x, mesa6y)
     else:
         bump = False 
+def processTable(data):
+    global mesa
+    mesa = data.data
+    rospy.loginfo("Mesa: " + str(mesa))
+    rospy.loginfo("Esperando bebidas")
     
+
+
 class ClienteMoveBase:
     def __init__(self):
         #creamos un cliente ROS para la acción, necesitamos el nombre del nodo 
@@ -121,25 +136,13 @@ if __name__ == '__main__':
     pub_bumper = rospy.Publisher('/bumpsi', UInt8, queue_size=1)
     sub_bumper = rospy.Subscriber("/bumpsi",UInt8, processBump)
     
+    #To Do: Publicar mesa a través de un topic
+    pub_mesa = rospy.Publisher('/mesa', UInt8, queue_size=1)
+    sub_mesa = rospy.Subscriber("/mesa",UInt8, processTable)
     cliente = ClienteMoveBase()
     #To Do: Cancelar el movimiento 
-    #To Do: Publicar mesa a través de un topic
     
-    while(True):
-        mesa = int(input("Que mesa quieres?(0 volver a casa): "))
-        if mesa == 0:
-            rospy.loginfo("Voy a la cosina")
-        if mesa == 1:
-            rospy.loginfo("Voy a la mesa 1")
-        if mesa == 2:
-            rospy.loginfo("Voy a la mesa 2")
-        if mesa == 3:
-            rospy.loginfo("Voy a la mesa 3")
-        if mesa == 4:
-            rospy.loginfo("Voy a la mesa 4")
-        if mesa == 5:
-            rospy.loginfo("Voy a la mesa 5")
-
+    
      
         
     rospy.spin()
