@@ -89,6 +89,7 @@ def processBump(data):
             cliente.moveTo(mesa6x, mesa6y)
     else:
         bump = False 
+ 
 def processTable(data):
     global mesa
     mesa = data.data
@@ -129,13 +130,13 @@ class ClienteMoveBase:
 
 if __name__ == '__main__':
     global sub
-    rospy.init_node("pruebita")
+    rospy.init_node("move_waiter")
     #wait for the subscriber to be ready
     sub = rospy.Subscriber("saved_waypoint_markers",MarkerArray, newOdom)
     pub = rospy.Publisher("/cmd_vel", Twist, queue_size=1)
     pub_bumper = rospy.Publisher('/bumpsi', UInt8, queue_size=1)
     sub_bumper = rospy.Subscriber("/bumpsi",UInt8, processBump)
-    
+ 
     #To Do: Publicar mesa a través de un topic
     pub_mesa = rospy.Publisher('/mesa', UInt8, queue_size=1)
     sub_mesa = rospy.Subscriber("/mesa",UInt8, processTable)
