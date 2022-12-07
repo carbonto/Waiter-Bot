@@ -40,6 +40,38 @@ El mapeado se ha creado utilizando la biblioteca de [Yael Ben Shalom](https://gi
 el cual hemos obtenido el siguiente resultado.
 ![](/waiter_bot/images/mapa_costa_coffee.png)
 
+## Crear waypoints 
+Si queremos crear waypoints en un mapa personalizado o añadir al que tenemos que lanzar el rviz añadiendo el mapa que vamos a usar real o simulado y a continuación el siguiente comando.
+```
+roslaunch waiter_bot only_waypoints.launch
+``` 
+Despues publicamos el punto mediante publish point. Para guardarlo usamos este comando:
+```
+rosservice call /waypoints_save_saver "name: 'nombre_waypoint'"
+```
+
+## Usar en turtlebot 2 real 🐢️
+Usando los turtlebot del laboratorio el procedimiento sería el siguiente
+
+
+
+```
+Configuracion de tu bashrc previo
+ssh turtlebot@ipturtlebot
+roslaunch turtlebot_bringup minimal.launch
+roslaunch turtlebot_bringup hokuyo_ust10lx.launch
+Pasamos el mapa
+scp archivo turtlebot@laIP:direccion 
+export TURTLEBOT_3D_SENSOR=astra
+roslaunch turtlebot_navigation amcl_demo.launch map_file:=/home/turtlebot/fichero_de_tu_mapa.yaml
+```
+Desde nuestro terminal lanzamos los siguientes comandos 
+
+```
+
+
+```
+
 
 
 
