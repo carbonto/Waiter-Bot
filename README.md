@@ -35,10 +35,10 @@ roslaunch waiter_bot waypoints.launch map_name:="mapa_costa_coffee"
 ### Mapa Simulacion 🗺️
 El mapa que se ha creado para la simulación es un costa coffee realizado mediante la herramienta builder de gazebo y modelados realizados en blender e importados a 
 urdf.xacro
-![](/images/costa_gazebo.png)
+![](/waiter_bot/images/costa_gazebo.png)
 El mapeado se ha creado utilizando la biblioteca de [Yael Ben Shalom](https://github.com/YaelBenShalom/Turtlebot3-Navigation-with-SLAM#usage-and-configuration-instructions)
 el cual hemos obtenido el siguiente resultado.
-![](/images/mapa_costa_coffee.png)
+![](/waiter_bot/images/mapa_costa_coffee.png)
 
 
 
