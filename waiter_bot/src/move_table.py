@@ -134,7 +134,7 @@ if __name__ == '__main__':
     #wait for the subscriber to be ready
     sub = rospy.Subscriber("saved_waypoint_markers",MarkerArray, newOdom)
     pub = rospy.Publisher("/cmd_vel", Twist, queue_size=1)
-    pub_bumper = rospy.Publisher('/bumpsi', UInt8, queue_size=1)
+    #pub_bumper = rospy.Publisher('/bumpsi', UInt8, queue_size=1)
     sub_bumper = rospy.Subscriber("/bumpsi",UInt8, processBump)
  
     #To Do: Publicar mesa a través de un topic
