@@ -1,0 +1,22 @@
+<launch>
+<!-- We start the waypoint generator to be able to reset tables on the fly -->
+   <node pkg="ros_waypoint_generator"
+          type="ros_waypoint_generator"
+          name="ros_waypoint_generator_node">
+    </node>
+
+    <node pkg="waiter_bot" type="save_waypoint.py" name="save_waypoint_node" output="screen">
+        <param name="way_points_file_path"
+                type="string"
+                value="$(find waiter_bot)/waypoints_saved/$(arg map_name).pickle" />
+    </node>
+
+    <!--Move table-->
+  <node pkg="waiter_bot" name="move_table" type="move_table.py" output="screen"> 
+  </node>
+    <!--Inteface-->
+    <node pkg="waiter_bot" name="interfaz" type="interfaz.py" output="screen">
+  <!-- rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find waiter_bot)/rviz/rviz.rviz" />
+
+</launch>

@@ -68,9 +68,16 @@ roslaunch turtlebot_navigation amcl_demo.launch map_file:=/home/turtlebot/ficher
 Desde nuestro terminal lanzamos los siguientes comandos 
 
 ```
-
-
+roslaunch waiter_bot only_waypoints.launch
+rosrun rviz rviz 
 ```
+En el rviz colocamos el tf en base_link para ver la posicion de nuestro robot. 
+IMPORTANTE: para visualizar correctamente lo que sigue, fijar en RViz como sistema de coordenadas fixed frame -> map
+Si el robot no se mueve, es que no se ha localizado correctamente. Para ello, pulsar en 2D Pose Estimate y colocar el robot en el mapa y hubicarlo correctamente mediante teleop.
+
+Para guardar los waypoints sería el mismo procedimiento que se ha explicado anteriormente.
+
+
 
 
 
