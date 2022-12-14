@@ -1,4 +1,5 @@
 <launch>
+<arg name="open_rviz" default="true"/>
 <!-- We start the waypoint generator to be able to reset tables on the fly -->
    <node pkg="ros_waypoint_generator"
           type="ros_waypoint_generator"
@@ -16,7 +17,13 @@
   </node>
     <!--Inteface-->
     <node pkg="waiter_bot" name="interfaz" type="interfaz.py" output="screen">
+    </node>
   <!-- rviz -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find waiter_bot)/rviz/rviz.rviz" />
-
+  
+  <!--Broadcast camera to browser-->
+  <node name ="web_video_server" pkg = "web_video_server" type = "web_video_server" output = "screen"/>
+ 
+  <!--Real-->
+  <!--"http://localhost:8080/stream?topic=/camera/rgb/image_raw&type=ros_compressed"-->
 </launch>
+

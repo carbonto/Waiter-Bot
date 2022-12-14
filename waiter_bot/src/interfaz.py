@@ -24,7 +24,7 @@ from geometry_msgs.msg import Twist
 from visualization_msgs.msg import Marker, MarkerArray
 from kivymd.app import MDApp
 from kivy.lang import Builder
-
+import webbrowser
 
 
 class Interfaz(MDApp):
@@ -77,11 +77,21 @@ class Interfaz(MDApp):
         rospy.loginfo("Going to table 6")
         msg = 6
         pub_mesa.publish(msg)
+    def cancel(self,*args):
+        rospy.loginfo("Cancelado movimiento")
+        pub_cancel2.cancel_all_goals()
+    def camara(self,*args):
+        url = 'http://localhost:8080/stream?topic=/camera/rgb/image_raw&type=ros_compressed'
+        webbrowser.open(url)
+    #     #App().get_running_app().stop()
 #main
 if __name__ == '__main__':
 
     pub_bumper = rospy.Publisher('/bumpsi', UInt8, queue_size=1)
     pub_mesa = rospy.Publisher('/mesa', UInt8, queue_size=1)
+    pub_cancel = rospy.Publisher('/move_base/cancel',GoalID,queue_size=1)
+    pub_cancel2 = actionlib.SimpleActionClient('move_base',MoveBaseAction)
     rospy.init_node('Interfaz',anonymous=True)
-
+    # url = 'http://google.com'
+    # webbrowser.open(url)
     Interfaz().run()

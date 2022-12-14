@@ -68,14 +68,13 @@ def newOdom(msg):
 def processBump(data):
     global bump
     global mesa
+
     if data.data == 1:
         bump = True
         rospy.loginfo("Bebidas puestas en la mesa")
         rospy.loginfo("Moviendo a destino")
         cliente = ClienteMoveBase()
-        if mesa == 0:
-            cliente.moveTo(homex,homey)
-        elif mesa == 1:
+        if mesa == 1:
             cliente.moveTo(mesa1x, mesa1y)
         elif mesa == 2:
             cliente.moveTo(mesa2x, mesa2y)
@@ -95,6 +94,8 @@ def processTable(data):
     mesa = data.data
     rospy.loginfo("Mesa: " + str(mesa))
     rospy.loginfo("Esperando bebidas")
+    if mesa == 0:
+        cliente.moveTo(homex,homey)
     
 
 
@@ -142,6 +143,7 @@ if __name__ == '__main__':
     sub_mesa = rospy.Subscriber("/mesa",UInt8, processTable)
     cliente = ClienteMoveBase()
     #To Do: Cancelar el movimiento 
+    
     
     
      
