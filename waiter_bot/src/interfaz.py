@@ -57,6 +57,7 @@ class Interfaz(MDApp):
         rospy.loginfo("Going to table 1")
         msg = 1
         pub_mesa.publish(msg)
+        self.screen.ids.estado.text = "Yendo a mesa 1"
     def table2(self,*args):
         rospy.loginfo("Going to table 2")
         msg = 2
@@ -84,6 +85,12 @@ class Interfaz(MDApp):
         url = 'http://localhost:8080/stream?topic=/camera/rgb/image_raw&type=ros_compressed'
         webbrowser.open(url)
     #     #App().get_running_app().stop()
+
+
+    #status 1 es yendo mesa y estatus 3 es que ha llegado a la mesa
+    #En cada funcion de mesa se publica el numero de mesa a la que se va
+    #En cancelar tambien publica que se ha cancelado el movimiento 
+    #Con funcion aparte se dice si ha llegado o no 
 #main
 if __name__ == '__main__':
 

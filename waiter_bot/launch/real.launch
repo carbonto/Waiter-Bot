@@ -19,7 +19,10 @@
     <node pkg="waiter_bot" name="interfaz" type="interfaz.py" output="screen">
     </node>
   <!-- rviz -->
-  
+  <group if="$(arg open_rviz)"> 
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find waiter_bot)/rviz/config_waiter_bot.rviz"/>
+  </group>
   <!--Broadcast camera to browser-->
   <node name ="web_video_server" pkg = "web_video_server" type = "web_video_server" output = "screen"/>
  

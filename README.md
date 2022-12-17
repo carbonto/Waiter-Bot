@@ -32,6 +32,7 @@ Para lanzar el entorno simulado del costa coffee tenemos que cargar la simulacio
 roslaunch waiter_bot gazebo_costa_sim.launch
 roslaunch waiter_bot waypoints.launch map_name:="mapa_costa_coffee"
 ```
+Una vez lanzado se podrá manejar el robot a través de la interfaz y ver la camara para seguirlo en tiempo real dando en el boton de la camara.
 ### Mapa Simulacion 🗺️
 El mapa que se ha creado para la simulación es un costa coffee realizado mediante la herramienta builder de gazebo y modelados realizados en blender e importados a 
 urdf.xacro
@@ -39,7 +40,10 @@ urdf.xacro
 El mapeado se ha creado utilizando la biblioteca de [Yael Ben Shalom](https://github.com/YaelBenShalom/Turtlebot3-Navigation-with-SLAM#usage-and-configuration-instructions)
 el cual hemos obtenido el siguiente resultado.
 ![](/waiter_bot/images/mapa_costa_coffee.png)
-
+### Interfaz 🖥️
+Cuando se lanza el entorno simulado se lanza la interfaz de usuario que se puede ver en la siguiente imagen.
+![](/waiter_bot/images/interfaz.png)
+La interfaz se ha creado en python utilizando KivyMD, ya que esta librería nos permite crear una interfaz de usuario de manera sencilla y con un diseño agradable, ademñas de que nos permite crear aplicaciones multiplataforma.
 ## Crear waypoints 
 Si queremos crear waypoints en un mapa personalizado o añadir al que tenemos que lanzar el rviz añadiendo el mapa que vamos a usar real o simulado y a continuación el siguiente comando.
 ```
