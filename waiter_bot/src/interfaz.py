@@ -30,8 +30,6 @@ import webbrowser
 def process_table(data):
     global mesa
     mesa = data.data
-    rospy.loginfo("Mesa: " + str(mesa))
-    Interfaz().screen.ids.estado.text = "Yendo a mesa " + str(mesa)
 def process_estado(data):
     global estado
     estado = data.status
@@ -53,12 +51,14 @@ class Interfaz(MDApp):
         msg = 1
         pub_bumper.publish(msg)
         self.screen.ids.load_food.text = "Food loaded"
+        self.screen.ids.estado.text = "Yendo a mesa " + str(mesa)
         rospy.loginfo("Food loaded")
     def unload_food(self,*args):
         rospy.loginfo("Unloading food")
         msg = 0
         pub_bumper.publish(msg)
         self.screen.ids.load_food.text = "Load food"
+        self.screen.ids.estado.text = "Llegado a mesa " + str(mesa) + " y bebidas descargadas"
         rospy.loginfo("Food unloaded")
     def home(self,*args):
         rospy.loginfo("Going home")
@@ -90,24 +90,12 @@ class Interfaz(MDApp):
         pub_mesa.publish(msg)
     def cancel(self,*args):
         rospy.loginfo("Cancelado movimiento")
+        self.screen.ids.estado.text = "Cancelado movimiento"
         pub_cancel2.cancel_all_goals()
     def camara(self,*args):
         url = 'http://localhost:8080/stream?topic=/camera/rgb/image_raw&type=ros_compressed'
         webbrowser.open(url)
     #     #App().get_running_app().stop()
-    def estado(self,*args):
-        global mesa, estado,load_food
-        if estado == 1 and load_food == 1:
-            self.screen.ids.estado.text = "Yendo a mesa " + str(mesa)
-        elif estado == 3:
-            self.screen.ids.estado.text = "Llegado a mesa"
-            if load_food == 0:
-                self.screen.ids.estado.text = "Bebidas retiradas"
-        elif estado == 4:
-            self.screen.ids.estado.text = "Cancelado"
-        elif estado == 1 and mesa == 0:
-            self.screen.ids.estado.text = "Yendo a home"
-
     #status 1 es yendo mesa y estatus 3 es que ha llegado a la mesa
     #En cada funcion de mesa se publica el numero de mesa a la que se va
     #En cancelar tambien publica que se ha cancelado el movimiento 
