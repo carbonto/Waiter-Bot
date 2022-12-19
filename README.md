@@ -1,4 +1,4 @@
-# Waiter-Bot (Sin acabar aún en desarrollo)
+# Waiter-Bot 🤖️🍹️)
 Se trata de un aplicación del turtlebot para convertirlo en un robot camarero, a traves de ROS y una interfaz.
 ## Comenzando 🚀
 Estas intrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propositos de desarrollo y pruebas.
