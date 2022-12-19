@@ -42,7 +42,7 @@ el cual hemos obtenido el siguiente resultado.
 ![](/waiter_bot/images/mapa_costa_coffee.png)
 ### Interfaz 🖥️
 Cuando se lanza el entorno simulado se lanza la interfaz de usuario que se puede ver en la siguiente imagen.
-![](/waiter_bot/images/interfaz.png)
+![](/waiter_bot/images/interfaz.jpeg)
 La interfaz se ha creado en python utilizando KivyMD, ya que esta librería nos permite crear una interfaz de usuario de manera sencilla y con un diseño agradable, ademñas de que nos permite crear aplicaciones multiplataforma.
 ## Crear waypoints 
 Si queremos crear waypoints en un mapa personalizado o añadir al que tenemos que lanzar el rviz añadiendo el mapa que vamos a usar real o simulado y a continuación el siguiente comando.
