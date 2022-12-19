@@ -82,7 +82,8 @@ Si el robot no se mueve, es que no se ha localizado correctamente. Para ello, pu
 
 Para guardar los waypoints sería el mismo procedimiento que se ha explicado anteriormente.
 
-
+## Menciones
+Si vas a usar cualquiera de los recursos de este repositorio, por favor, menciona a los autores originales.<3
 
 
 
