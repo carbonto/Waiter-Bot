@@ -117,3 +117,4 @@ if __name__ == '__main__':
     # url = 'http://google.com'
     # webbrowser.open(url)
     Interfaz().run()
+Footer
