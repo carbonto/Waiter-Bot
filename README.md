@@ -84,7 +84,8 @@ Para guardar los waypoints sería el mismo procedimiento que se ha explicado ant
 
 ## Menciones
 Si vas a usar cualquiera de los recursos de este repositorio, por favor, menciona a los autores originales.<3
-
+- [David Carbonell Pastor](https://github.com/carbonto)
+- [Pablo Coloma]()
 
 
 
